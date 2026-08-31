@@ -26,6 +26,15 @@ jobs:
         run: |
           git clone --recursive https://github.com/theos/theos.git $THEOS
 
+      - name: Install Linux toolchain (clang/ld64)
+        run: |
+          curl -LO https://github.com/sbingner/llvm-project/releases/latest/download/linux-ios-arm64e-clang-toolchain.tar.lzma
+          TMP=$(mktemp -d)
+          tar -xvf linux-ios-arm64e-clang-toolchain.tar.lzma -C $TMP
+          mkdir -p $THEOS/toolchain/linux/iphone
+          mv $TMP/ios-arm64e-clang-toolchain/* $THEOS/toolchain/linux/iphone/
+          rm -rf linux-ios-arm64e-clang-toolchain.tar.lzma $TMP
+
       - name: Download iOS SDK
         run: |
           git clone -n --depth=1 --filter=tree:0 https://github.com/theos/sdks.git
