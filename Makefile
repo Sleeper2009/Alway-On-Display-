@@ -7,7 +7,7 @@ export THEOS_PACKAGE_SCHEME = rootless
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = AODTweak
-AODTweak_FILES = Tweak.xm
+AODTweak_FILES = tweak.x
 AODTweak_CFLAGS = -fobjc-arc
 AODTweak_FRAMEWORKS = UIKit IOKit
 AODTweak_PRIVATE_FRAMEWORKS = SpringBoardServices SpringBoardFoundation
