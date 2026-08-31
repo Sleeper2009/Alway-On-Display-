@@ -1,0 +1,35 @@
+name: Build AODTweak
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Theos
+        uses: theos/actions/setup-theos@master
+        with:
+          version: master
+
+      - name: Build package (rootless)
+        run: |
+          export THEOS_PACKAGE_SCHEME=rootless
+          make package FINALPACKAGE=1
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Upload .deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AODTweak-rootless
+          path: packages/*.deb
