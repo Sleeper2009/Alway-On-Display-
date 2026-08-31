@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceOrder</key>
+	<array>
+		<string>GroupMode</string>
+		<string>Mode</string>
+		<string>GroupMode2</string>
+		<string>Mode2Brightness</string>
+		<string>GroupGeneral</string>
+		<string>TimeoutSeconds</string>
+		<string>AlwaysOnCharging</string>
+	</array>
+
+	<key>PreferenceSpecifiers</key>
+	<array>
+
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Chế độ</string>
+			<key>Key</key>
+			<string>GroupMode</string>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSSegmentedControlSpecifier</string>
+			<key>Title</key>
+			<string>Mode</string>
+			<key>Key</key>
+			<string>AODMode</string>
+			<key>DefaultValue</key>
+			<integer>1</integer>
+			<key>Values</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>Tắt hẳn</string>
+				<string>Giảm sáng</string>
+				<string>Nền đen</string>
+			</array>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Mode 2</string>
+			<key>Key</key>
+			<string>GroupMode2</string>
+			<key>FooterText</key>
+			<string>Độ sáng riêng khi ở Mode 2 (giữ nguyên hình nền).</string>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSSliderSpecifier</string>
+			<key>Title</key>
+			<string>Độ sáng Mode 2</string>
+			<key>Key</key>
+			<string>AODMode2Brightness</string>
+			<key>DefaultValue</key>
+			<real>0.15</real>
+			<key>MinimumValue</key>
+			<real>0.02</real>
+			<key>MaximumValue</key>
+			<real>0.6</real>
+			<key>ShowValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Chung</string>
+			<key>Key</key>
+			<string>GroupGeneral</string>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Giây trước khi tắt hẳn</string>
+			<key>Key</key>
+			<string>AODTimeoutSeconds</string>
+			<key>DefaultValue</key>
+			<integer>15</integer>
+			<key>KeyboardType</key>
+			<string>NumberPad</string>
+			<key>IsSecure</key>
+			<false/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Luôn hoạt động khi đang sạc</string>
+			<key>Key</key>
+			<string>AODAlwaysOnWhileCharging</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+
+	</array>
+
+	<key>Title</key>
+	<string>AOD Tweak</string>
+</dict>
+</plist>
