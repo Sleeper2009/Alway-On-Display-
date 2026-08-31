@@ -41,7 +41,7 @@ jobs:
           cd sdks
           git sparse-checkout set --no-cone iPhoneOS14.5.sdk
           git checkout
-          mv iPhoneOS15.6.sdk $THEOS/sdks/
+          mv iPhoneOS14.5.sdk $THEOS/sdks/
           cd ..
 
       - name: Build package (rootless)
