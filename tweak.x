@@ -22,13 +22,15 @@
 
 // ============ Helper đọc settings ============
 
+// FIX: Dùng biến toàn cục thay vì static local để tránh __cxa_guard_acquire/release
+static NSUserDefaults *_aodDefaults = nil;
+static dispatch_once_t _aodDefaultsOnce;
+
 static NSUserDefaults *AODDefaults(void) {
-    static NSUserDefaults *defaults;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        defaults = [[NSUserDefaults alloc] initWithSuiteName:kAODSuite];
+    dispatch_once(&_aodDefaultsOnce, ^{
+        _aodDefaults = [[NSUserDefaults alloc] initWithSuiteName:kAODSuite];
     });
-    return defaults;
+    return _aodDefaults;
 }
 
 static NSInteger AODCurrentMode(void) {
@@ -76,13 +78,17 @@ static const CGFloat kAODFloorBacklight = 0.01f;
 - (void)applyOverlayForMode:(NSInteger)mode;
 @end
 
+// FIX: Dùng biến toàn cục thay vì static local trong +shared để tránh C++ guard symbols
+static AODManager *_sharedAODManager = nil;
+static dispatch_once_t _sharedAODManagerOnce;
+
 @implementation AODManager
 
 + (instancetype)shared {
-    static AODManager *m;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{ m = [AODManager new]; });
-    return m;
+    dispatch_once(&_sharedAODManagerOnce, ^{
+        _sharedAODManager = [AODManager new];
+    });
+    return _sharedAODManager;
 }
 
 - (void)enterAODIfNeeded {
