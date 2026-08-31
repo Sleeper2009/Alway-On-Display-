@@ -30,9 +30,9 @@ jobs:
         run: |
           git clone -n --depth=1 --filter=tree:0 https://github.com/theos/sdks.git
           cd sdks
-          git sparse-checkout set --no-cone iPhoneOS15.0.sdk
+          git sparse-checkout set --no-cone iPhoneOS15.6.sdk
           git checkout
-          mv iPhoneOS15.0.sdk $THEOS/sdks/
+          mv iPhoneOS15.6.sdk $THEOS/sdks/
           cd ..
 
       - name: Build package (rootless)
