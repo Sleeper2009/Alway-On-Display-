@@ -8,7 +8,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = AODTweak
 AODTweak_FILES = tweak.x
-AODTweak_CFLAGS = -fobjc-arc
+AODTweak_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 AODTweak_FRAMEWORKS = UIKit IOKit
 AODTweak_PRIVATE_FRAMEWORKS = SpringBoardServices SpringBoardFoundation
 
