@@ -1,9 +1,9 @@
-Package: com.yourname.aodtweak
+Package: com.fujb2009.aod
 Name: Always on display 
 Version: 1.0.0
-Architecture: iphoneos-arm
+Architecture: iphoneos-arm64
 Description: Always-On-Display 
 Maintainer: YourName
-Author: YourName
+Author: fujb2009
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 14.0), preferenceloader
