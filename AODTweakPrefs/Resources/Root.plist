@@ -5,12 +5,12 @@
 	<key>PreferenceOrder</key>
 	<array>
 		<string>GroupMode</string>
-		<string>Mode</string>
+		<string>AODMode</string>
 		<string>GroupMode2</string>
-		<string>Mode2Brightness</string>
+		<string>AODMode2Brightness</string>
 		<string>GroupGeneral</string>
-		<string>TimeoutSeconds</string>
-		<string>AlwaysOnCharging</string>
+		<string>AODTimeoutSeconds</string>
+		<string>AODAlwaysOnWhileCharging</string>
 	</array>
 
 	<key>PreferenceSpecifiers</key>
