@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 #import <IOKit/ps/IOPowerSources.h>
-
+#import <objc/message.h>
 /*
  =====================================================================
  LƯU Ý QUAN TRỌNG:
