@@ -6,4 +6,4 @@ Description: Always-On-Display
 Maintainer: YourName
 Author: YourName
 Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 14.0)
+Depends: mobilesubstrate, firmware (>= 14.0), preferenceloader
