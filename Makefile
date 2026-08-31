@@ -1,21 +1,17 @@
-ARCHS = arm64e
-TARGET := iphone:clang:14.5:14.0
-THEOS_DEVICE_IP = 
-
-export THEOS_PACKAGE_SCHEME = rootless
+ARCHS = arm64 arm64e
+TARGET := iphone:clang:latest:14.0
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = AODTweak
-AODTweak_FILES = tweak.x
-AODTweak_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
-AODTweak_FRAMEWORKS = UIKit IOKit
-AODTweak_PRIVATE_FRAMEWORKS = SpringBoardServices SpringBoardFoundation
+BUNDLE_NAME = AODTweakPrefs
+AODTweakPrefs_INSTALL_PATH = /Library/PreferenceBundles
+AODTweakPrefs_FILES = AODTweakPrefsListController.m
+AODTweakPrefs_FRAMEWORKS = UIKit CoreGraphics QuartzCore
+AODTweakPrefs_PRIVATE_FRAMEWORKS = Preferences
+AODTweakPrefs_RESOURCE_FILES = Resources/entry.plist Resources/Root.plist
 
-include $(THEOS_MAKE_PATH)/tweak.mk
+include $(THEOS_MAKE_PATH)/bundle.mk
 
-SUBPROJECTS += AODTweakPrefs
-include $(THEOS_MAKE_PATH)/aggregate.mk
-
+SUBPROJECT_AFTER_INSTALL = 1
 after-install::
-	install.exec "killall -9 SpringBoard"
+	install.exec "killall -9 Preferences || true"
