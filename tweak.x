@@ -186,7 +186,10 @@ static dispatch_once_t _sharedAODManagerOnce;
 
     // Status bar
     // TODO: đúng API SB có thể là -[SBStatusBarController setStatusBarHidden:]
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:UIStatusBarAnimationFade];
+#pragma clang diagnostic pop
 
     // Home indicator -> thường phải setNeedsUpdateOfHomeIndicatorAutoHidden trên
     // root view controller tương ứng, để %new hook riêng ở phần dưới.
