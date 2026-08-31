@@ -1,5 +1,6 @@
 ARCHS = arm64 arm64e
 TARGET := iphone:clang:latest:14.0
+THEOS_DEVICE_IP =
 
 include $(THEOS)/makefiles/common.mk
 
@@ -9,6 +10,7 @@ AODTweakPrefs_FILES = AODTweakPrefsListController.m
 AODTweakPrefs_FRAMEWORKS = UIKit CoreGraphics QuartzCore
 AODTweakPrefs_PRIVATE_FRAMEWORKS = Preferences
 AODTweakPrefs_RESOURCE_FILES = Resources/entry.plist Resources/Root.plist
+AODTweakPrefs_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 
