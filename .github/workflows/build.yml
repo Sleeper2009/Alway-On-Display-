@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y curl git perl xz-utils
+          sudo apt-get install -y curl git perl xz-utils libtinfo5
 
       - name: Clone Theos
         run: |
