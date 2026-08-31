@@ -10,23 +10,35 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      THEOS: /home/runner/theos
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
 
-      - name: Setup Theos
-        uses: theos/actions/setup-theos@master
-        with:
-          version: master
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl git perl xz-utils
+
+      - name: Clone Theos
+        run: |
+          git clone --recursive https://github.com/theos/theos.git $THEOS
+
+      - name: Download iOS SDK
+        run: |
+          git clone -n --depth=1 --filter=tree:0 https://github.com/theos/sdks.git
+          cd sdks
+          git sparse-checkout set --no-cone iPhoneOS15.0.sdk
+          git checkout
+          mv iPhoneOS15.0.sdk $THEOS/sdks/
+          cd ..
 
       - name: Build package (rootless)
         run: |
           export THEOS_PACKAGE_SCHEME=rootless
           make package FINALPACKAGE=1
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Upload .deb artifact
         uses: actions/upload-artifact@v4
