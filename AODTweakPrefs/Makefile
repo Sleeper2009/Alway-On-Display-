@@ -13,7 +13,7 @@ AODTweakPrefs_RESOURCE_FILES = Resources/Root.plist
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 
-before-package::
+internal-stage::
 	@mkdir -p $(THEOS_STAGING_DIR)/Library/PreferenceLoader/Preferences
 	@cp -f Resources/entry.plist $(THEOS_STAGING_DIR)/Library/PreferenceLoader/Preferences/AODTweakPrefs.plist
 
